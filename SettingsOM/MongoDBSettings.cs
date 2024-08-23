@@ -1,4 +1,4 @@
-﻿namespace CRUDTemplateMongo.Settings
+﻿namespace Mongo.Settings
 {
     public class MongoDBSettings
     {

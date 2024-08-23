@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CRUDTemplateMongo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f67f4041884833737826305186adaf82420e8a10")]
 [assembly: System.Reflection.AssemblyProductAttribute("CRUDTemplateMongo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CRUDTemplateMongo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

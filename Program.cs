@@ -2,7 +2,7 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Rewrite;
 using Mongo.Services;
-using CRUDTemplateMongo.Settings;
+using Mongo.Settings;
 using Business.Interface;
 using Repository.Interface;
 using Business;

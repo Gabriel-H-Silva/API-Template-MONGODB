@@ -1,5 +1,5 @@
-﻿using CRUDTemplateMongo.Settings;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
+using Mongo.Settings;
 using MongoDB.Driver;
 
 namespace Mongo.Services

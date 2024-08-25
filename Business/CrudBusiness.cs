@@ -2,30 +2,97 @@
 using Model.Generic;
 using ModelsIM;
 using ModelsOM;
-using Repository;
+using Repository.Interface;
 
 namespace Business
 {
     public class CrudBusiness : ICrudBusiness
     {
-        private CrudRepository _crudRepository;
+        private ICrudRepository _crudRepository;
+        private Information information = new Information();
 
-        public CrudBusiness(CrudRepository crudRepository)
+        public CrudBusiness(ICrudRepository crudRepository)
         {
             _crudRepository = crudRepository;
         }
 
         public async Task<ResultDM> GetAll(ResultDM result)
         {
-            List<CrudOM> crud = await _crudRepository.GetAll();
-            if(crud.Count > 0)
+            try
             {
-                result.Res = crud;
+                List<CrudOM> crud = await _crudRepository.GetAll();
+
+                if (crud.Count > 0)
+                {
+                    result.Res = crud;
+                    result.Information = information.ResultInformation("CRUD", (int)EnumResultDM.EventCode.CodeGet, (int)EnumResultDM.StatusCode.StatusSuccess);
+
+                }
+                else
+                {
+                    result.Information = information.ResultInformation("Não foi encontrado nenhum CRUD no banco", (int)EnumResultDM.EventCode.CodeCustom, (int)EnumResultDM.StatusCode.StatusWarning);
+                }
             }
-            else
+            catch (Exception e)
             {
-                result.Information.Status = 1;
-                result.Information.Message = "Dados não encontrado";
+                result.Information = information.ResultInformation("CRUD", (int)EnumResultDM.EventCode.CodeSave, (int)EnumResultDM.StatusCode.StatusError);
+                result.Res = e.Message;
+            }
+
+
+            return result;
+        }
+
+        public async Task<ResultDM> GetById(ResultDM result)
+        {
+            string id = (string)result.Req;
+
+            try
+            {
+
+                CrudOM crud = await _crudRepository.GetById(id);
+                if (crud != null)
+                {
+                    result.Res = crud;
+                }
+                else
+                {
+                    result.Information = information.ResultInformation("Registro não encontrado", (int)EnumResultDM.EventCode.CodeCustom, (int)EnumResultDM.StatusCode.StatusWarning);
+                }
+            }
+            catch (Exception e)
+            {
+                result.Information = information.ResultInformation("CRUD", (int)EnumResultDM.EventCode.CodeSave, (int)EnumResultDM.StatusCode.StatusError);
+                result.Res = e.Message;
+            }
+
+            return result;
+        }
+
+        public async Task<ResultDM> RemoveById(ResultDM result)
+        {
+            string id = (string)result.Req;
+
+            try
+            {
+                CrudOM crud = await _crudRepository.GetById(id);
+                if (crud != null)
+                {
+                    await _crudRepository.RemoveById(id);
+                    result.Res = "Removido";
+
+                    result.Information = information.ResultInformation("CRUD", (int)EnumResultDM.EventCode.CodeRemove, (int)EnumResultDM.StatusCode.StatusSuccess);
+                }
+                else
+                {
+                    result.Information = information.ResultInformation("Registro não encontrado", (int)EnumResultDM.EventCode.CodeCustom, (int)EnumResultDM.StatusCode.StatusWarning);
+                }
+
+            }
+            catch (Exception e)
+            {
+                result.Information = information.ResultInformation("CRUD", (int)EnumResultDM.EventCode.CodeSave, (int)EnumResultDM.StatusCode.StatusError);
+                result.Res = e.Message;
             }
 
             return result;
@@ -33,24 +100,25 @@ namespace Business
 
         public async Task<ResultDM> SendToSave(ResultDM result)
         {
+
             CrudIM crudIM = (CrudIM)result.Req;
 
-            CrudOM crudOM = new CrudOM();
-
-            if(string.IsNullOrEmpty(crudIM.Id)) crudOM.Id = crudIM.Id;
-            if(string.IsNullOrEmpty(crudIM.Name)) crudOM.Name = crudIM.Name;
-
-
-            result.Saved = await _crudRepository.Save(crudOM);
-
-            if (result.Saved != true)
+            try
             {
-                result.Res = crudIM;
+                CrudOM crudOM = new CrudOM();
+
+                if (!string.IsNullOrEmpty(crudIM.Id)) crudOM.Id = crudIM.Id;
+                if (!string.IsNullOrEmpty(crudIM.Name)) crudOM.Name = crudIM.Name;
+
+
+                result.Res = await _crudRepository.Save(crudOM);
+                result.Information = information.ResultInformation("CRUD", (int)EnumResultDM.EventCode.CodeSave, (int)EnumResultDM.StatusCode.StatusSuccess);
+
             }
-            else
+            catch (Exception e)
             {
-                result.Information.Status = 0;
-                result.Information.Message = "Falha no Salvar";
+                result.Information = information.ResultInformation("CRUD", (int)EnumResultDM.EventCode.CodeSave, (int)EnumResultDM.StatusCode.StatusError);
+                result.Res = e.Message;
             }
 
             return result;

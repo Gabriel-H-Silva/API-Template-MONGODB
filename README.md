@@ -10,3 +10,5 @@ Models:
 OM (Object Model): Represents the data model for the database.
 IM (Interface Model): Defines the data model interface.
 To get started, simply add the connection string for MongoDB and adjust the models as needed.
+
+Created by Gabriel Henrique de Oliveira Silva

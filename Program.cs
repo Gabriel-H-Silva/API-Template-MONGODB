@@ -2,11 +2,11 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Rewrite;
 using Mongo.Services;
-using Mongo.Settings;
 using Business.Interface;
-using Repository.Interface;
 using Business;
-using Repository;
+using Repository.Generic;
+using Repository.Interface;
+using BaseAPI.Infrastructure;
 
 internal class Program
 {
@@ -34,7 +34,9 @@ internal class Program
         builder.Services.AddControllers();
 
         builder.Services.AddScoped<ICrudBusiness, CrudBusiness>();
-        builder.Services.AddScoped<ICrudRepository, CrudRepository>();
+
+        // 
+        builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
         builder.Services.AddSwaggerGen(c =>
         {
@@ -42,7 +44,7 @@ internal class Program
             {
                 Title = appName,
                 Version = appVersion,
-                Description = $"Api de treinamento para comunicação do banco MongoDB",
+                Description = $"Modelo para API com MongoDB",
                 Contact = new OpenApiContact
                 {
                     Name = "Gabriel Henrique",

@@ -1,0 +1,8 @@
+C:\Users\Administrator\source\repos\Gabriel-H-Silva\API-Template-MONGODB\obj\Debug\net8.0\CRUDTemplateMongo.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\Gabriel-H-Silva\API-Template-MONGODB\obj\Debug\net8.0\CRUDTemplateMongo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\source\repos\Gabriel-H-Silva\API-Template-MONGODB\obj\Debug\net8.0\CRUDTemplateMongo.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\Gabriel-H-Silva\API-Template-MONGODB\obj\Debug\net8.0\CRUDTemplateMongo.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\Gabriel-H-Silva\API-Template-MONGODB\obj\Debug\net8.0\CRUDTemplateMongo.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\Gabriel-H-Silva\API-Template-MONGODB\obj\Debug\net8.0\CRUDTemplateMongo.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Administrator\source\repos\Gabriel-H-Silva\API-Template-MONGODB\obj\Debug\net8.0\CRUDTemplateMongo.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Administrator\source\repos\Gabriel-H-Silva\API-Template-MONGODB\obj\Debug\net8.0\CRUDTemplateMongo.sourcelink.json

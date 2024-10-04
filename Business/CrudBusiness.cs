@@ -1,26 +1,26 @@
 ﻿using Business.Interface;
+using DataModels.CrudDM;
 using Model.Generic;
-using ModelsIM;
-using ModelsOM;
+using Models.CrudModel;
 using Repository.Interface;
 
 namespace Business
 {
     public class CrudBusiness : ICrudBusiness
     {
-        private ICrudRepository _crudRepository;
+        private IGenericRepository<CrudModel> _repository;
         private Information information = new Information();
 
-        public CrudBusiness(ICrudRepository crudRepository)
+        public CrudBusiness(IGenericRepository<CrudModel> crudRepository)
         {
-            _crudRepository = crudRepository;
+            _repository = crudRepository;
         }
 
-        public async Task<ResultDM> GetAll(ResultDM result)
+        public async Task<ResultDM> Get(ResultDM result)
         {
             try
             {
-                List<CrudOM> crud = await _crudRepository.GetAll();
+                List<CrudModel> crud = await _repository.Get();
 
                 if (crud.Count > 0)
                 {
@@ -50,7 +50,7 @@ namespace Business
             try
             {
 
-                CrudOM crud = await _crudRepository.GetById(id);
+                CrudModel crud = await _repository.GetById(id);
                 if (crud != null)
                 {
                     result.Res = crud;
@@ -75,10 +75,10 @@ namespace Business
 
             try
             {
-                CrudOM crud = await _crudRepository.GetById(id);
+                CrudModel crud = await _repository.GetById(id);
                 if (crud != null)
                 {
-                    await _crudRepository.RemoveById(id);
+                    await _repository.RemoveById(id);
                     result.Res = "Removido";
 
                     result.Information = information.ResultInformation("CRUD", (int)EnumResultDM.EventCode.CodeRemove, (int)EnumResultDM.StatusCode.StatusSuccess);
@@ -101,17 +101,17 @@ namespace Business
         public async Task<ResultDM> SendToSave(ResultDM result)
         {
 
-            CrudIM crudIM = (CrudIM)result.Req;
+            CrudDM crudIM = (CrudDM)result.Req;
 
             try
             {
-                CrudOM crudOM = new CrudOM();
+                CrudModel crudOM = new CrudModel();
 
                 if (!string.IsNullOrEmpty(crudIM.Id)) crudOM.Id = crudIM.Id;
                 if (!string.IsNullOrEmpty(crudIM.Name)) crudOM.Name = crudIM.Name;
 
 
-                result.Res = await _crudRepository.Save(crudOM);
+                result.Res = await _repository.Save(crudOM);
                 result.Information = information.ResultInformation("CRUD", (int)EnumResultDM.EventCode.CodeSave, (int)EnumResultDM.StatusCode.StatusSuccess);
 
             }

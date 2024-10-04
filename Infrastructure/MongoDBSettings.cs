@@ -1,4 +1,4 @@
-﻿namespace Mongo.Settings
+﻿namespace BaseAPI.Infrastructure
 {
     public class MongoDBSettings
     {

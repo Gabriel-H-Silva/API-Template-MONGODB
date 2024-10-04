@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Options;
-using Mongo.Settings;
+﻿using BaseAPI.Infrastructure;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 namespace Mongo.Services

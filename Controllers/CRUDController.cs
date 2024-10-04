@@ -1,14 +1,19 @@
 ﻿
 using Business.Interface;
+using DataModels.CrudDM;
 using Microsoft.AspNetCore.Mvc;
 using Model.Generic;
-using ModelsIM;
 
 namespace Controllers
 {
     [ApiVersion("1")]
     [ApiController]
     [Route("api/[controller]/v{version:apiVersion}")]
+    /*
+     * @author Gabriel
+     * 
+     * 
+     */
     public class CRUDController : ControllerBase
     {
         private ICrudBusiness _business;
@@ -19,11 +24,11 @@ namespace Controllers
         }
 
         [HttpGet()]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> Get()
         {
             ResultDM result = new ResultDM();
             result.Req = "GET";
-            result = await _business.GetAll(result);
+            result = await _business.Get(result);
             return Ok(result);
         }
 
@@ -32,12 +37,12 @@ namespace Controllers
         {
             ResultDM result = new ResultDM();
             result.Req = "GET";
-            result = await _business.GetAll(result);
+            result = await _business.GetById(result);
             return Ok(result);
         }
 
         [HttpPost()]
-        public async Task<IActionResult> SendToSave([FromBody] CrudIM crudIM)
+        public async Task<IActionResult> SendToSave([FromBody] CrudDM crudIM)
         {
             ResultDM result = new ResultDM();
             result.Req = crudIM;

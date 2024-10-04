@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\source\\repos\\Gabriel-H-Silva\\API-Template-MONGODB\\CRUDTemplateMongo.csproj": {}
+    "C:\\Users\\Administrator\\source\\repos\\Gabriel-H-Silva\\API-Template-MONGODB\\BaseAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\source\\repos\\Gabriel-H-Silva\\API-Template-MONGODB\\CRUDTemplateMongo.csproj": {
+    "C:\\Users\\Administrator\\source\\repos\\Gabriel-H-Silva\\API-Template-MONGODB\\BaseAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\Gabriel-H-Silva\\API-Template-MONGODB\\CRUDTemplateMongo.csproj",
-        "projectName": "CRUDTemplateMongo",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\Gabriel-H-Silva\\API-Template-MONGODB\\CRUDTemplateMongo.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\Gabriel-H-Silva\\API-Template-MONGODB\\BaseAPI.csproj",
+        "projectName": "BaseAPI",
+        "projectPath": "C:\\Users\\Administrator\\source\\repos\\Gabriel-H-Silva\\API-Template-MONGODB\\BaseAPI.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Administrator\\source\\repos\\Gabriel-H-Silva\\API-Template-MONGODB\\obj\\",
         "projectStyle": "PackageReference",
